@@ -94,10 +94,11 @@ function auttonSub(mode, data) {
     } else if (mode == 'Confirm') {
         if (data.files[0]) {
             let fileObj = data.files[0];
-            let fileName = fileObj.fileName;
+            let fileName = fileObj.name;
             let formData = new FormData();
             formData.append('file', fileObj);
             formData.append('id', aData.data.id);
+            formData.append('fileName', fileName);
             axios.post('/create-box-file', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             }).then(res => {
